@@ -21,18 +21,6 @@
   when: not ITS_tools_dir_check.stat.exists == true
 
 
-- name: Copy Over add_specific_node_to_cluster_que.sh /admin_tools/awx-operator
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/add_specific_node_to_cluster_que.sh"
-    dest: "/admin_tools/awx-operator"
-
-
-- name: Copy Over backup_super_user_creation.sh /admin_tools/awx-operator
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/backup_super_user_creation.sh"
-    dest: "/admin_tools/awx-operator"
-
-
 
 - name: Copy Over Custom config_files to /admin_tools/awx-operator
   ansible.builtin.copy:
