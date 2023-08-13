@@ -25,9 +25,6 @@
       prompt: "Enter a password for local awx user to be created on system"
       private: no 
 
-
-      awx_user_password_var
-
   roles:
   
     - install_required_packages
