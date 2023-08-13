@@ -68,13 +68,13 @@
   ansible.builtin.shell:  /usr/local/bin/kubectl  create ns awx
   args:
     executable: /bin/bash
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Create Namespace for AWX Operator Pt.3
   ansible.builtin.shell:  /usr/local/bin/kubectl  config set-context --current --namespace=awx
   args:
     executable: /bin/bash
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Set the Hostname of the System In AWX Config File
   ansible.builtin.shell:  python3 set_hostname_for_AWX_Server.py
@@ -306,7 +306,7 @@
 
 
 - name: Export AWX NameSpace To AWX User Bash Profile
-  become: yes
+  become: true
   become_user: awx
   ansible.builtin.shell: echo 'export NAMESPACE=awx' >>  ~/.bashrc
   args:
