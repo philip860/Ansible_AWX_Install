@@ -1,0 +1,18 @@
+- name: Get IP Address From AWX Node C
+  no_log: false
+  set_fact:
+    awx_node_c_variable: "{{ ansible_default_ipv4['address'] }}"
+
+
+########### Set Variables to be used Downstream in Other Playbook Tasks
+- name: Set ip_address_c to be used downstream
+  set_stats:
+    data:
+     ip_address_c:  "{{ awx_node_c_variable }}"
+
+
+##############  Printed Variables Below #################################
+
+- name: "Print out awx_node_c_variable"
+  debug:
+    msg: "The awx cluster node c: {{ awx_node_c_variable }}"

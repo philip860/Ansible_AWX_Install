@@ -1,0 +1,9 @@
+---
+#We will install the nescessary packages required to run 
+#The k3s Service on RHEL 8
+
+- name: Include k3s_install install
+  ansible.builtin.include_tasks:
+    file: k3s_install.yml
+
+

@@ -1,0 +1,18 @@
+- name: Get IP Address From AWX Node Postgres
+  no_log: false
+  set_fact:
+    awx_node_postgres_variable: "{{ ansible_default_ipv4['address'] }}"
+
+
+########### Set Variables to be used Downstream in Other Playbook Tasks
+- name: Set ip_address_postgress to be used downstream
+  set_stats:
+    data:
+     ip_address_postgress:  "{{ awx_node_postgres_variable }}"
+
+
+##############  Printed Variables Below #################################
+
+- name: "Print out awx_node_postgres_variable"
+  debug:
+    msg: "The awx cluster node d: {{ awx_node_postgres_variable }}"
