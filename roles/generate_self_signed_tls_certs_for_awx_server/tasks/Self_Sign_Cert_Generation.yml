@@ -22,7 +22,7 @@
   community.crypto.x509_certificate:
     path: "/etc/letsencrypt/archive/{{ ansible_nodename }}/cert1.pem"
     csr_content: "{{ csr.csr }}"
-    privatekey_path: /etc/pki/httpd/server.key
+    privatekey_path: "/etc/letsencrypt/archive/{{ ansible_nodename }}/privkey1.pem"
     provider: selfsigned
 
 
