@@ -26,7 +26,7 @@
     
 
 - name: Copy Over Custom awx-deploy files to /admin_tools/awx-operator
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: "{{ role_path }}/files/awx-deploy"
     dest: "/admin_tools"
   
