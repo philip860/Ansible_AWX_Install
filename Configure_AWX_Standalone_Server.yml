@@ -1,0 +1,11 @@
+---
+- name: Configure AWX Standalone Server
+  hosts: "{{ awx_node_a }}" 
+  gather_facts: true
+  become: true
+  roles:
+  
+    - install_required_packages
+    - install_k3s
+    #- certbot_install_for_awx_nodes
+    - awx_operator_setup
