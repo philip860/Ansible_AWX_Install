@@ -10,7 +10,7 @@
 - name: Set variable for ITS tools directory
   stat:
     path: "/admin_tools"
-  register:  ITS_tools_dir_check
+  register:  admin_tools_dir_check
 
 - name: Create the ITS_tools directory if it is not present
   ansible.builtin.file:
@@ -18,7 +18,7 @@
     state: directory
     mode: '0755'
     recurse: yes
-  when: not ITS_tools_dir_check.stat.exists == true
+  when: not admin_tools_dir_check.stat.exists == true
 
 
 
