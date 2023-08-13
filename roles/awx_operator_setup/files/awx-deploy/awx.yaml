@@ -14,7 +14,7 @@ spec:
 
   ingress_type: ingress
   ingress_tls_secret: awx-secret-tls
-  hostname: ITS-SYSVAR.grove.ad.uconn.edu    
+  hostname: "{{ ansible_fqdn }}"  
   postgres_configuration_secret: awx-postgres-configuration
 
   postgres_storage_class: awx-postgres-volume
