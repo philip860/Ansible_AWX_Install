@@ -1,9 +1,0 @@
----
-#We will install the nescessary packages required to run 
-#The OpenLDAP Server on RHEL 8
-
-- name: Include package install
-  ansible.builtin.include_tasks:
-    file: package_install.yml
-
-

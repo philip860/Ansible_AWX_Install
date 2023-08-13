@@ -1,0 +1,7 @@
+---
+
+- name: Include setup_stand_alone_awx_instance.yml File
+  ansible.builtin.include_tasks:
+    file: setup_stand_alone_awx_instance.yml
+
+

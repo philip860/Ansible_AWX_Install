@@ -27,4 +27,4 @@
     - install_k3s
     #- certbot_install_for_awx_nodes
     - awx_operator_setup
-    - configure_standonlone_awx_server
+    - configure_standalone_awx_server
