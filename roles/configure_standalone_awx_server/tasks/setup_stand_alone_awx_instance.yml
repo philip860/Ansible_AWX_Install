@@ -76,11 +76,11 @@
     executable: /bin/bash
   ignore_errors: true
 
-- name: Set the Hostname of the System In AWX Config File
-  ansible.builtin.shell:  python3 set_hostname_for_AWX_Server.py
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files
+#- name: Set the Hostname of the System In AWX Config File
+#  ansible.builtin.shell:  python3 set_hostname_for_AWX_Server.py
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files
 
 - name: Create Required Persistent Volume Directories
   file:
