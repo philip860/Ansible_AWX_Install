@@ -203,29 +203,6 @@
     executable: /bin/bash
     chdir: /admin_tools/awx-operator/awx-deploy    
      
-
-- name: Entering awx_backup_username Into backup_super_user_creation.sh Script
-  replace:
-    path: "/admin_tools/awx-operator/backup_super_user_creation.sh"
-    regexp: 'backup_username'
-    replace: "{{  awx_backup_username }}"
-
-
-- name: Entering awx_backup_username Into backup_super_user_creation.sh Script
-  replace:
-    path: "/admin_tools/awx-operator/backup_super_user_creation.sh"
-    regexp: 'backup_password'
-    replace: "{{  awx_backup_password }}"
-
-- name: Entering awx_cluster_name Into add_specific_node_to_cluster_que.sh Script
-  replace:
-    path: "/admin_tools/awx-operator/add_specific_node_to_cluster_que.sh"
-    regexp: 'cluster_name'
-    replace: "{{  awx_cluster_name }}"
-
-
-
-
     
 
 - name: Waiting 30 Seconds For Previous Command
