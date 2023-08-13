@@ -1,6 +1,6 @@
 ---
 - name: Configure AWX Standalone Server
-  hosts: "{{ awx_single_node }}" 
+  hosts: '{{ awx_single_node }}' 
   gather_facts: true
   become: true
   vars_prompt:
