@@ -29,8 +29,7 @@
   ansible.builtin.copy:
     src: "{{ role_path }}/files/awx-deploy"
     dest: "/admin_tools"
- 
- 
+  
 
 - name: Entering awx_postgres_db_host Into secret File
   replace:

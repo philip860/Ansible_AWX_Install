@@ -270,11 +270,11 @@
     immediate: yes
     zone: public
 
-- name: Set the IP Address,Hostname, & FDQN In /etc/hosts File
-  ansible.builtin.shell:  python3 GET_IP_Address.py
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files
+#- name: Set the IP Address,Hostname, & FDQN In /etc/hosts File
+#  ansible.builtin.shell:  python3 GET_IP_Address.py
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files
 
 - name: Waiting 30 Seconds For Pods To Initialize
   ansible.builtin.shell:  /bin/sleep 30
