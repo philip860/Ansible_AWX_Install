@@ -62,7 +62,7 @@
 - name: Entering awx_admin_username_password Into secret File
   replace:
     path: "/admin_tools/awx-deploy/secret.yaml"
-    regexp: 'awx_admin_username_password'
+    regexp: 'awx_password'
     replace: "{{  awx_admin_username_password }}"    
 
         
