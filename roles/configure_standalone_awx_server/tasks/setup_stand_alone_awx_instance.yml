@@ -35,11 +35,11 @@
     dest: "/admin_tools/awx-operator"
    
 
-- name: Copy Over Custom awx-deploy to /admin_tools/awx-operator
-  ansible.builtin.copy:
-    src: "/admin_tools/awx-deploy"
-    dest: "/admin_tools/awx-operator"
-    remote_src: yes 
+#- name: Copy Over Custom awx-deploy to /admin_tools/awx-operator
+#  ansible.builtin.copy:
+#    src: "/admin_tools/awx-deploy"
+#    dest: "/admin_tools/awx-operator"
+#    remote_src: yes 
 
 
 - name: Create the ITS_tools Git Download Directory
