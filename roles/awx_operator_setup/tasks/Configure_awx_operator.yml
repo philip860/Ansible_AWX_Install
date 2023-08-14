@@ -28,7 +28,7 @@
 - name: Copy Over Custom awx-deploy files to /admin_tools/awx-operator
   ansible.builtin.copy:
     src: "{{ role_path }}/files/awx-deploy"
-    dest: "/admin_tools"
+    dest: "/admin_tools/awx-operator"
   
 
 #- name: Entering awx_postgres_db_host Into secret File
@@ -40,28 +40,28 @@
 
 - name: "Entering  hostname {{ ansible_fqdn }} Into secret File"
   replace:
-    path: "/admin_tools/awx-deploy/awx.yaml"
+    path: "/admin_tools/awx-operator/awx-deploy/awx.yaml"
     regexp: 'ansible_fqdn'
     replace: "{{  ansible_fqdn }}"
 
 
 - name: Entering awx_postgres_db_password Into secret File
   replace:
-    path: "/admin_tools/awx-deploy/secret.yaml"
+    path: "/admin_tools/awx-operator/awx-deploy/secret.yaml"
     regexp: 'awx_postgres_db_password'
     replace: "{{  awx_postgres_db_password }}"
 
   
 - name: Entering awx_admin_username Into secret File
   replace:
-    path: "/admin_tools/awx-deploy/secret.yaml"
+    path: "/admin_tools/awx-operator/awx-deploy/secret.yaml"
     regexp: 'awx_admin_username'
     replace: "{{  awx_admin_username }}"
    
 
 - name: Entering awx_admin_username_password Into secret File
   replace:
-    path: "/admin_tools/awx-deploy/secret.yaml"
+    path: "/admin_tools/awx-operator/awx-deploy/secret.yaml"
     regexp: 'awx_password'
     replace: "{{  awx_admin_username_password }}"    
 
