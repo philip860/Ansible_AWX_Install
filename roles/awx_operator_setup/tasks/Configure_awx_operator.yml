@@ -38,6 +38,13 @@
 #    replace: "{{  awx_postgres_server }}"
 
 
+- name: "Entering  hostname {{ ansible_fqdn }} Into secret File"
+  replace:
+    path: "/admin_tools/awx-deploy/awx.yaml"
+    regexp: 'ansible_fqdn'
+    replace: "{{  ansible_fqdn }}"
+
+
 - name: Entering awx_postgres_db_password Into secret File
   replace:
     path: "/admin_tools/awx-deploy/secret.yaml"
