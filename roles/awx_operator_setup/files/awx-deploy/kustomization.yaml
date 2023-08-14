@@ -15,12 +15,12 @@ secretGenerator:
   - name: awx-postgres-configuration
     type: Opaque
     literals:
-      - host=awx_postgres_server
+      - host=awx-postgres-13
       - port=5432
       - database=awx
       - username=awx
       - password=awx_postgres_db_password
-      - type=unmanaged
+      - type=managed
 
 
 resources:

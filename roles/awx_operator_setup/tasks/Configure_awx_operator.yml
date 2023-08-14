@@ -73,10 +73,9 @@
 #    regexp: 'awx_postgres_server'
 #    replace: "{{  awx_postgres_server }}"
 
-#### Uncomment if Using a seperate Postgres DB for AWX Server
-#- name: Entering awx_postgres_server Into kustomization.yaml File
-#  replace:
-#    path: "/admin_tools/awx-deploy/kustomization.yaml"
-#    regexp: 'awx_postgres_db_password'
-#    replace: "{{ awx_postgres_db_password }}"
+- name: Entering awx_postgres_server Into kustomization.yaml File
+  replace:
+    path: "/admin_tools/awx-deploy/kustomization.yaml"
+    regexp: 'awx_postgres_db_password'
+    replace: "{{ awx_postgres_db_password }}"
 
