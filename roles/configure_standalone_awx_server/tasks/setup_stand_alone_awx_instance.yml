@@ -319,10 +319,10 @@
 - name: Enter in AWX Creds into /admin_tools/standalone_awx_server_creds/creds.txt File
   ansible.builtin.copy:
     content: |
-      awx_postgres_db_password={{ awx_postgres_db_password }}
-      awx_secret_key={{ secret_key }}
-      awx_admin_username={{ awx_admin_username }}
-      awx_admin_username_password={{ awx_admin_username_password }}
+      Ansible AWX Postgres DB Password={{ awx_postgres_db_password }}
+      Ansible AWX Secret Key={{ secret_key }}
+      Ansible AWX Web UI Admin Username={{ awx_admin_username }}
+      Ansible AWX Web UI Admin Password={{ awx_admin_username_password }}
     dest: /admin_tools/standalone_awx_server_creds/creds.txt
 
   
