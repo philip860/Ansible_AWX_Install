@@ -301,6 +301,26 @@
     executable: /bin/bash
     chdir: /admin_tools/awx-operator/config_files/
 
+
+- name: Create the ITS_tools Git Download Directory
+  ansible.builtin.file:
+    path: "/admin_tools/standalone_awx_server_creds"
+    state: directory
+    mode: '0755'
+    recurse: true 
+
+- name: Enter in AWX Creds into /admin_tools/standalone_awx_server_creds/creds.txt File
+  ansible.builtin.copy:
+    content: |
+      awx_postgres_db_password={{ awx_postgres_db_password }}
+      awx_secret_key={{ secret_key }}
+      awx_admin_username={{ awx_admin_username }}
+      awx_admin_username_password={{ awx_admin_username_password }}
+    dest: /admin_tools/standalone_awx_server_creds/creds.txt
+
+      awx_user_password_var
+
+
 - name: How you can Access AWX Server
   ansible.builtin.debug:
     msg:
