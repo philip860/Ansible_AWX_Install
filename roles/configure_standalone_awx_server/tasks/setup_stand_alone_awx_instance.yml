@@ -330,4 +330,4 @@
 - name: How you can Access AWX Server
   ansible.builtin.debug:
     msg:
-    - "Navigate to http://hostname/awx/#/login to access AWX Login"
+    - "Navigate to https://{{ ansible_fqdn }}/awx/#/login to access AWX Login"
