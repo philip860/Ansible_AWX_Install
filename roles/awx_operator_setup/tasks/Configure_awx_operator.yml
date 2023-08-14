@@ -31,11 +31,11 @@
     dest: "/admin_tools"
   
 
-- name: Entering awx_postgres_db_host Into secret File
-  replace:
-    path: "/admin_tools/awx-deploy/secret.yaml"
-    regexp: 'awx_postgres_db_host'
-    replace: "{{  awx_postgres_server }}"
+#- name: Entering awx_postgres_db_host Into secret File
+#  replace:
+#    path: "/admin_tools/awx-deploy/secret.yaml"
+#    regexp: 'awx_postgres_db_host'
+#    replace: "{{  awx_postgres_server }}"
 
 
 - name: Entering awx_postgres_db_password Into secret File
