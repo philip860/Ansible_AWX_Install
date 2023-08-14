@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: awx
 
 
-
 secretGenerator:
   - name: awx-secret-tls
     type: kubernetes.io/tls
