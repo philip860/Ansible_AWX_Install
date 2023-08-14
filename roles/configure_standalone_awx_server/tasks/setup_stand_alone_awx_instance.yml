@@ -228,17 +228,17 @@
   args:
     executable: /bin/bash
 
-- name: Going to Delete Default v1beta1.metrics.k8s.io components file
-  ansible.builtin.shell:  /usr/local/bin/kubectl delete -f components-default.yaml
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files
+#- name: Going to Delete Default v1beta1.metrics.k8s.io components file
+#  ansible.builtin.shell:  /usr/local/bin/kubectl delete -f components-default.yaml
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files
 
-- name: Going to Add Custom v1beta1.metrics.k8s.io components file
-  ansible.builtin.shell:  /usr/local/bin/kubectl apply -f metrics-components-edited.yaml
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files
+#- name: Going to Add Custom v1beta1.metrics.k8s.io components file
+#  ansible.builtin.shell:  /usr/local/bin/kubectl apply -f metrics-components-edited.yaml
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files
 
 - name: Prepare Traefik for HTTP Redirection
   ansible.builtin.shell:  /usr/local/bin/kubectl -n default apply -f middleware.yaml
@@ -296,17 +296,17 @@
   args:
     executable: /bin/bash
 
-- name: Going to Delete Default v1beta1.metrics.k8s.io components file (2nd Time Running This Task)
-  ansible.builtin.shell:  /usr/local/bin/kubectl delete -f components-default.yaml
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files
+#- name: Going to Delete Default v1beta1.metrics.k8s.io components file (2nd Time Running This Task)
+#  ansible.builtin.shell:  /usr/local/bin/kubectl delete -f components-default.yaml
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files
 
-- name: Going to Add Custom v1beta1.metrics.k8s.io components file (2nd Time Running This Task)
-  ansible.builtin.shell:  /usr/local/bin/kubectl apply -f metrics-components-edited.yaml
-  args:
-    executable: /bin/bash
-    chdir: /admin_tools/awx-operator/config_files/
+#- name: Going to Add Custom v1beta1.metrics.k8s.io components file (2nd Time Running This Task)
+#  ansible.builtin.shell:  /usr/local/bin/kubectl apply -f metrics-components-edited.yaml
+#  args:
+#    executable: /bin/bash
+#    chdir: /admin_tools/awx-operator/config_files/
 
 
 - name: Create the ITS_tools Git Download Directory
