@@ -318,8 +318,7 @@
       awx_admin_username_password={{ awx_admin_username_password }}
     dest: /admin_tools/standalone_awx_server_creds/creds.txt
 
-      awx_user_password_var
-
+  
 
 - name: How you can Access AWX Server
   ansible.builtin.debug:
