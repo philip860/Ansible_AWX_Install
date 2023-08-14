@@ -1,7 +1,7 @@
 
 - name: Create the /etc/letsencrypt/archive/directory if it is not present
   ansible.builtin.file:
-    path: "/etc/letsencrypt/archive/"
+    path: "/etc/letsencrypt/archive/{{ ansible_nodename }}"
     state: directory
     mode: '0755'
     recurse: yes

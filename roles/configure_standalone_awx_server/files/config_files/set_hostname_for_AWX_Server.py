@@ -12,8 +12,7 @@ Short_Hostname_var = str(subprocess.getoutput("hostname -s"))
 #Output of short_Hostname_var in all lowercase 
 Short_Hostname_Lowercase_var = Short_Hostname_var.lower()
 
-#Replace the Default Hostname in the awx-instance-deployment.yml file 
-#subprocess.check_output([f"sed -i 's/ITS-SYSVAR/{Short_Hostname_Lowercase_var}/g' /ITS_tools/awx-operator/awx-operator/awx-deploy/awx-instance-deployment.yml"], shell=True, universal_newlines=True)
+k_output([f"sed -i 's/ITS-SYSVAR/{Short_Hostname_Lowercase_var}/g' /ITS_tools/awx-operator/awx-operator/awx-deploy/awx-instance-deployment.yml"], shell=True, universal_newlines=True)
 
 #Replace the Default Hostname in the base/awx.yaml file 
 subprocess.check_output([f"sed -i 's/ITS-SYSVAR/{Short_Hostname_Lowercase_var}/g' /ITS_tools/awx-operator/awx-deploy/awx.yaml"], shell=True, universal_newlines=True)
