@@ -3,7 +3,7 @@
 
 - name: Include package install
   ansible.builtin.include_tasks:
-    file: package_install.yml
+    file: package_install_on_rhel.yml
   when: ('RedHat' in ansible_os_family )
 
 
