@@ -6,7 +6,9 @@
     mode: '0755'
     recurse: yes
 
-
+- name: Generate an OpenSSL private key with the default values (4096 bits, RSA) and a passphrase
+  community.crypto.openssl_privatekey:
+    path: "/etc/letsencrypt/archive/{{ ansible_nodename }}/privkey1.pem"
 
 - name: Create certificate signing request (CSR) for self-signed certificate
   community.crypto.openssl_csr_pipe:
