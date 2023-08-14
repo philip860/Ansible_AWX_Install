@@ -75,7 +75,7 @@
 
 - name: Entering awx_postgres_server Into kustomization.yaml File
   replace:
-    path: "/admin_tools/awx-deploy/kustomization.yaml"
+    path: "/admin_tools/awx-operator/awx-deploy/kustomization.yaml"
     regexp: 'awx_postgres_db_password'
     replace: "{{ awx_postgres_db_password }}"
 
