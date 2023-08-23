@@ -1,9 +1,3 @@
-- name: Permit traffic in default zone on port 5432/tcp For External Postgres Server
-  ansible.posix.firewalld:
-    port: 5432/tcp
-    permanent: yes
-    immediate: yes
-    state: enabled
 
 
 
@@ -35,12 +29,6 @@
     dest: "/admin_tools/awx-operator"
    
 
-#- name: Copy Over Custom awx-deploy to /admin_tools/awx-operator
-#  ansible.builtin.copy:
-#    src: "/admin_tools/awx-deploy"
-#    dest: "/admin_tools/awx-operator"
-#    remote_src: yes 
-
 
 - name: Create the ITS_tools Git Download Directory
   ansible.builtin.file:
@@ -68,11 +56,7 @@
     executable: /bin/bash
   ignore_errors: true
 
-#- name: Set the Hostname of the System In AWX Config File
-#  ansible.builtin.shell:  python3 set_hostname_for_AWX_Server.py
-#  args:
-#    executable: /bin/bash
-#    chdir: /admin_tools/awx-operator/config_files
+
 
 - name: Create Required Persistent Volume Directories
   file:
