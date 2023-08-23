@@ -175,13 +175,11 @@
     replace: "{{ secret_key }}"
 
 
-
 - name: Allow SSH
   community.general.ufw:
     rule: allow
     name: OpenSSH
-
-
+    
 - name: Allow port range 2379-2380
   community.general.ufw:
     rule: allow
@@ -189,17 +187,15 @@
     proto: tcp
 
 - name: Configure Firewall Ports For Kubernetes
-  ansible.posix.firewalld:
-    port: "{{ item }}/tcp"
-    permanent: true
-    state: enabled
-    immediate: true
+  community.general.ufw:
+    port: "{{ item }}"
+    rule: allow
+    proto: tcp
   loop:
     - 8443
     - 8080
     - 10250
     - 10248
-    - 2379-2380
     - 10259
     - 10255
     - 6443
