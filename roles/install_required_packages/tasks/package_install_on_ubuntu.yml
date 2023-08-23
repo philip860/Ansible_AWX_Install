@@ -12,5 +12,6 @@
       - wget
       - openssh-server
       - git
+      - make
 
 
