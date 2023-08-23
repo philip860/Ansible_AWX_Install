@@ -351,9 +351,24 @@
       Ansible AWX Web UI Admin Password={{ awx_admin_username_password }}
     dest: /admin_tools/standalone_awx_server_creds/creds.txt
 
-  
+
+
+- name: Get Default Admin Password For AWX Login
+  no_log: true
+  ansible.builtin.shell: '/usr/local/bin/kubectl -n awx get secret awx-admin-password -o jsonpath="{.data.password}" | base64 --decode'
+  args:
+    executable: /bin/bash
+  register: default_awx_web_ui_password_output
+
+
+- name: Show Default Web UI Login Admin Password
+  ansible.builtin.debug:
+    msg: "{{ default_awx_web_ui_password_output.stdout }}"
 
 - name: How you can Access AWX Server
   ansible.builtin.debug:
     msg:
     - "Navigate to https://{{ ansible_fqdn }}/awx/#/login to access AWX Login"
+
+
+    
