@@ -51,14 +51,6 @@
 
 
 
-- name: Restart K3s Service
-  ansible.builtin.systemd:
-    state: restarted
-    daemon_reload: yes
-    name: docker
-    enabled: yes
-
-
 - name: Create Namespace for AWX Operator Pt.1
   ansible.builtin.shell:  export NAMESPACE=awx
   args:
@@ -199,6 +191,43 @@
     replace: "{{ secret_key }}"
 
 
+- name: Configure Firewall Ports For Kubernetes
+  ansible.posix.firewalld:
+    port: "{{ item }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop:
+    - 8443
+    - 8080
+    - 10250
+    - 10248
+    - 2379-2380
+    - 10259
+    - 10255
+    - 6443
+    - 51820
+    - 5432
+
+#For Pods
+- name: Configure Firewall K3s Source Network-1
+  ansible.posix.firewalld:
+    source: 10.42.0.0/16
+    zone: trusted
+    state: enabled
+    permanent: true
+    immediate: true
+
+#For services
+- name: Configure Firewall K3s Source Network-2
+  ansible.posix.firewalld:
+    source: 10.43.0.0/16
+    zone: trusted
+    state: enabled
+    permanent: true
+    immediate: true
+
+
 - name: Deploy AWX
   ansible.builtin.shell: cd /admin_tools/awx-operator &&  /usr/local/bin/kubectl apply -k awx-deploy
   args:
@@ -217,10 +246,7 @@
   args:
     executable: /bin/bash
 
-- name: Enable Docker Service 
-  ansible.builtin.shell:  systemctl enable docker
-  args:
-    executable: /bin/bash
+
 
 
 - name: Waiting 30 Seconds For Previous Command
@@ -240,11 +266,11 @@
     executable: /bin/bash
     chdir: /admin_tools/awx-operator/config_files
 
-#- name: Prepare Traefik for HTTP Redirection
-#  ansible.builtin.shell:  /usr/local/bin/kubectl -n default apply -f middleware.yaml
-#  args:
-#    executable: /bin/bash
-#    chdir: /admin_tools/awx-operator/http_redirect
+- name: Prepare Traefik for HTTP Redirection
+  ansible.builtin.shell:  /usr/local/bin/kubectl -n default apply -f middleware.yaml
+  args:
+    executable: /bin/bash
+    chdir: /admin_tools/awx-operator/http_redirect
 
 - name: Enable masquerade for Public Zone for http service
   ansible.posix.firewalld:
@@ -266,10 +292,10 @@
     executable: /bin/bash
 
 
-#- name: Patch AWX Instance To Allow for HTTP Redirection
-#  ansible.builtin.shell: bash /admin_tools/awx-operator/http_redirect/patch_awx_for_https.sh
-#  args:
-#    executable: /bin/bash
+- name: Patch AWX Instance To Allow for HTTP Redirection
+  ansible.builtin.shell: bash /admin_tools/awx-operator/http_redirect/patch_awx_for_https.sh
+  args:
+    executable: /bin/bash
     
     
 - name: Waiting 10 Seconds For Pods To Initialize After Patch

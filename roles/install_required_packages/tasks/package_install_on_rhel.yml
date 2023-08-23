@@ -1,9 +1,3 @@
-#Add Docker Repo
-- name: Upgrade Pip
-  ansible.builtin.shell: 'yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo'
-  args:
-    executable: /bin/bash
-
 
 - name: Install the Necessary Packages required to run AWX Server
   yum:
@@ -26,9 +20,6 @@
       - cyrus-sasl-gssapi
       - python3-policycoreutils
       - NetworkManager-cloud-setup
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
       - setroubleshoot
 
 
@@ -54,10 +45,3 @@
   args:
     executable: /bin/bash
 
-
-- name: Start Docker Service
-  ansible.builtin.systemd:
-    state: restarted
-    daemon_reload: yes
-    name: docker
-    enabled: yes
