@@ -32,3 +32,16 @@
     dest: /root/.kube/config
     remote_src: yes
   when: not kube_config_file_check.stat.exists == true
+
+
+- name: Set Permissions On kubectl executable
+  ansible.builtin.shell: chmod +x /usr/local/bin/kubectl
+  args:
+   executable: /bin/bash
+
+
+- name: Create Kubectl Symbolic Link
+  ansible.builtin.file: 
+    src: "/usr/local/bin/kubectl"
+    dest: '/usr/bin/kubectl'
+    state: link
