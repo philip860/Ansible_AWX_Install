@@ -11,5 +11,6 @@
       - curl
       - wget
       - openssh-server
+      - git
 
 
