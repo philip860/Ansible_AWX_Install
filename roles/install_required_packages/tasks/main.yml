@@ -4,7 +4,7 @@
 - name: Include package install
   ansible.builtin.include_tasks:
     file: package_install_on_rhel.yml
-  when: ('RedHat' in ansible_os_family )
+  when: ('RedHat' in ansible_os_family ) or ('CentOS' in ansible_os_family )
 
 
 - name: Include install_docker_on_ubuntu.yml File
