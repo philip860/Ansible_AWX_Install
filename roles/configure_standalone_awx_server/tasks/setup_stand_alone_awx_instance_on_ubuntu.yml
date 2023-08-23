@@ -256,13 +256,6 @@
     executable: /bin/bash
     chdir: /admin_tools/awx-operator/http_redirect
 
-- name: Enable masquerade for Public Zone for http service
-  ansible.posix.firewalld:
-    masquerade: yes
-    state: enabled
-    permanent: yes
-    immediate: yes
-    zone: public
 
 #- name: Set the IP Address,Hostname, & FDQN In /etc/hosts File
 #  ansible.builtin.shell:  python3 GET_IP_Address.py
