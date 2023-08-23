@@ -10,5 +10,6 @@
     name:
       - curl
       - wget
+      - openssh-server
 
 
