@@ -13,7 +13,7 @@
       - bzip2
       - python3-pip
       - libseccomp
-      - pam_krb5
+      #- pam_krb5
       - cyrus-sasl 
       - psmisc 
       - tcpdump 
@@ -21,6 +21,12 @@
       - python3-policycoreutils
       - NetworkManager-cloud-setup
       - setroubleshoot
+
+
+- name: Upgrade Pip
+  ansible.builtin.shell: 'yum localinstall {{ role_path }}/files/pam_krb5-4.11-1.el9.x86_64.rpm -y'
+  args:
+    executable: /bin/bash
 
 
 
