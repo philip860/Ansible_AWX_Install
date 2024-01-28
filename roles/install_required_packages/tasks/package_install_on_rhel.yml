@@ -22,11 +22,17 @@
       - NetworkManager-cloud-setup
       - setroubleshoot
 
+- name: Copy Over pam_krb5-4.11-1.el9.x86_64.rpm file
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/pam_krb5-4.11-1.el9.x86_64.rpm"
+    dest: /
 
 - name: Upgrade Pip
-  ansible.builtin.shell: 'yum localinstall {{ role_path }}/files/pam_krb5-4.11-1.el9.x86_64.rpm -y'
+  ansible.builtin.shell: 'yum localinstall pam_krb5-4.11-1.el9.x86_64.rpm -y'
   args:
     executable: /bin/bash
+    chdir: / 
+  
 
 
 
