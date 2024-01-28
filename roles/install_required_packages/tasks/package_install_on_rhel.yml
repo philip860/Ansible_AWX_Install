@@ -27,7 +27,7 @@
     src: "{{ role_path }}/files/pam_krb5-4.11-1.el9.x86_64.rpm"
     dest: /
 
-- name: Upgrade Pip
+- name: Install pam_krb5 Package
   ansible.builtin.shell: 'yum localinstall pam_krb5-4.11-1.el9.x86_64.rpm -y'
   args:
     executable: /bin/bash
