@@ -62,7 +62,7 @@
 
 
     - name: Update  /etc/systemd/system/k3s.service File
-      ansible.builtin.shell: "cat > /etc/systemd/system/k3s.service"
+      ansible.builtin.shell: "cat updated-k3s.service > /etc/systemd/system/k3s.service"
       args:
        executable: /bin/bash
        chdir: "/awx_install_files"
