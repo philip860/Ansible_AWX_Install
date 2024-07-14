@@ -1,4 +1,32 @@
 
+#In Order to get the k3s-service running correctly on RHEL9 a few services need to be disabled 
+- name: Disable nm-cloud-setup service on RHEL9 Disable 
+  ansible.builtin.systemd:
+    name: nm-cloud-setup
+  when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
+
+- name: Disable nm-cloud-setup.timer service on RHEL9 Disable 
+  ansible.builtin.systemd:
+    name: nm-cloud-setup.timer
+  when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
+
+- name: Restart Server
+  ansible.builtin.shell: "reboot"
+  args:
+    executable: /bin/bash
+  async: 35
+  poll: 0
+  when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
+  
+- name: Wait for system to become reachable over SSH
+  ansible.builtin.wait_for_connection:
+    connect_timeout: 10
+    delay: 5
+    timeout: 300
+  when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
+
+
+#Starting the K3s install
 - name: "Install k3s"
   block:
 
@@ -35,6 +63,8 @@
         src: "/usr/local/bin/kubectl"
         dest: '/usr/bin/kubectl'
         state: link
+
+     
 
   #Fixing Bug with k3s not installing correctly 
   rescue:
