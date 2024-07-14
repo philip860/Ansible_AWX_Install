@@ -58,7 +58,7 @@
     - name: Copy over custom k3s.service File
       ansible.builtin.copy:
         src: "{{ role_path }}/files/updated-k3s.service"
-        path: "/awx_install_files"
+        dest: "/awx_install_files"
 
 
     - name: Update  /etc/systemd/system/k3s.service File
@@ -104,3 +104,9 @@
         src: "/usr/local/bin/kubectl"
         dest: '/usr/bin/kubectl'
         state: link
+
+
+    - name: Delete the /awx_install_files Directory
+      ansible.builtin.file:
+        path: "/awx_install_files/"
+        state: absent
