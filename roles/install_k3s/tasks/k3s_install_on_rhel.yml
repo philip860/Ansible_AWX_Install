@@ -3,13 +3,15 @@
 - name: Disable nm-cloud-setup service on RHEL9 Disable 
   ansible.builtin.systemd:
     name: nm-cloud-setup
-    state: disabled
+    state: stopped
+    enabled: false
   when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
 
 - name: Disable nm-cloud-setup.timer service on RHEL9 Disable 
   ansible.builtin.systemd:
     name: nm-cloud-setup.timer
-    state: disabled
+    state: stopped
+    enabled: false
   when: ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution_major_version'] == "9"
 
 - name: Restart Server
