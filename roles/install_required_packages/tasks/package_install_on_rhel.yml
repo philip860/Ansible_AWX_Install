@@ -21,6 +21,7 @@
       - python3-policycoreutils
       - NetworkManager-cloud-setup
       - setroubleshoot
+      - firewalld
 
 - name: Copy Over pam_krb5-4.11-1.el9.x86_64.rpm file
   ansible.builtin.copy:
